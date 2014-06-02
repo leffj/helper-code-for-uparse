@@ -95,27 +95,6 @@ def display_progress(position,fileSize):
 	sys.stdout.flush()
 
 
-
- 
-def randomize_seq_order(input_fp,output_fp):
-	""" Take a fasta file and randomize the order of the the sequences. This is
-	used when doing clustering when there isn't a logical way to order the sequences
-	for UCLUST. This is an effort to remove bias for clusters being created around one
-	dataset or another.
-	"""
-
-	seqs = []
-	for seq_record in SeqIO.parse(open(input_fp,'rU'), "fasta"):
-		seqs.append(seq_record)
-	randIds = random.sample(range(0,len(seqs)),len(seqs))
-	seqsRand = []
-	for i in randIds:
-		seqsRand.append(seqs[i])
-	out = open(output_fp,'w')
-	SeqIO.write(seqsRand, out, "fasta")
-	out.close()
-
-
 if __name__ == "__main__":
 		main()
 
