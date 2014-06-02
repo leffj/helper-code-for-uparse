@@ -58,25 +58,37 @@ def main():
 		filterIDsList.append(line.strip().split('\t')[0])
 
 	# filter input based on list
-	good_seqs = []
+	# good_seqs = []
 	printcounter = 0
 	if fileType == 'fasta' or fileType == 'fa':
 		ftype = 'fasta'
 	elif fileType == 'fastq' or fileType == 'fq':
 		ftype = 'fastq'
 
+	# seq_iterator = SeqIO.parse(input_seqs,ftype)
+	# for seq_record in seq_iterator:
+	# 	matchID = re.match('^.*barcodelabel=(.*);$',seq_record.description)
+	# 	sampleID = matchID.group(1)
+	# 	if sampleID in filterIDsList:
+	# 		good_seqs.append(seq_record)
+	# 	if printcounter == 1000:
+	# 		pos = input_seqs.tell()
+	# 		display_progress(pos, fileSize)
+	# 		printcounter = 0
+	# 	printcounter += 1
+	# SeqIO.write(good_seqs, output, ftype)
+
 	seq_iterator = SeqIO.parse(input_seqs,ftype)
 	for seq_record in seq_iterator:
 		matchID = re.match('^.*barcodelabel=(.*);$',seq_record.description)
 		sampleID = matchID.group(1)
 		if sampleID in filterIDsList:
-			good_seqs.append(seq_record)
+			SeqIO.write(seq_record, output, ftype)
 		if printcounter == 1000:
 			pos = input_seqs.tell()
 			display_progress(pos, fileSize)
 			printcounter = 0
 		printcounter += 1
-	SeqIO.write(good_seqs, output, ftype)
 
 
 
