@@ -103,7 +103,7 @@ def main():
     sys.stdout.write('\n')
     in_f.close()
 
-    SeqIO.write(out_seqs,out,'fastq')
+    SeqIO.write(out_seqs,out,ftype)
     out.close()
 
 
