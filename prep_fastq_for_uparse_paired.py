@@ -20,8 +20,8 @@ from qiime.util import parse_command_line_parameters, get_options_lookup,\
 options_lookup = get_options_lookup()
 
 script_info={}
-script_info['brief_description']="""Prepare raw Illumina sequences for processing with UPARSE by demultiplexing. This version can be used for paired end reads that will later be merged but doesn't have to be. NOTE: demultiplexing is based on order of sequences in the index and read files and DOES NOT check headers."""
-script_info['script_description']="""prep fastq for uparse"""
+script_info['script_description']="""Prepare raw Illumina sequences for processing with UPARSE by demultiplexing. This version can be used for paired end reads that will later be merged but doesn't have to be. NOTE: demultiplexing is based on order of sequences in the index and read files and DOES NOT check headers."""
+script_info['brief_description']="""prep fastq for uparse"""
 script_info['script_usage']=[]
 script_info['script_usage'].append(("""Example:""","""Prep fastq sequences for UPARSE""","""%prog -i $PWD/seqs.fastq -b $PWD/barcode_seqs.fastq -m $PWD/mapping_file.txt -o $PWD/seqs_for_uparse.fastq"""))
 script_info['output_description']=""""""
