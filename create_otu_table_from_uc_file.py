@@ -46,15 +46,15 @@ def create_otu_table(uc_file, out_fp):
     
     # write table
     output = open(out_fp, "w")
-    line = "OTUId\t%s"%('\t'.join(barcodes))
+    line = "OTUId\t%s\n"%('\t'.join(barcodes))
     output.write(line)
     for otu in otus:
         counts = [0]*len(barcodes)
-        for idx in xrange(barcodes):
-            barcode = barcodes[idx]
+        for idx, barcode in enumerate(barcodes):
+            # barcode = barcodes[idx]
             counts[idx]=table[otu][barcode]
         
-        line = "%s\t%s"%(otu,'\t'.join(map(str,counts)))
+        line = "%s\t%s\n"%(otu,'\t'.join(map(str,counts)))
         output.write(line)
 
 
