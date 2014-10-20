@@ -5,7 +5,7 @@ __email__ = "jonathan.leff@colorado.edu"
 __version__ = "0.0.1"
 
 """
-Converts an uc file to an otu table
+Converts an uc file to an otu table. This is an alternative to the drive5 python script.
 """
 
 import argparse
