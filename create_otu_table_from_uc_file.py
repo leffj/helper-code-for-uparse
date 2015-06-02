@@ -36,14 +36,17 @@ def main():
 def create_otu_table(uc_file, out_fp):
     table = defaultdict(Counter)
     otus,barcodes = set(), set()
-    
+
     handle = open(uc_file,'r')
     fileSize = get_file_size(uc_file)
     printcounter = 0
     for ln in handle:
         ln = ln.rstrip()
         toks = ln.split('\t')
-        barcode = bar_re.findall(toks[8])[0]
+        try:
+            barcode = bar_re.findall(toks[8])[0]
+        except IndexError:
+            print toks
         otu = toks[9]
         if otu=="*": continue
         table[otu][barcode]+=1
@@ -56,7 +59,7 @@ def create_otu_table(uc_file, out_fp):
             printcounter = 0
         printcounter += 1
     display_progress(handle.tell(), fileSize)
-    
+
     # write table
     print "\nWritting table..."
     output = open(out_fp, "w")
