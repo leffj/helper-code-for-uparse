@@ -46,7 +46,7 @@ def create_otu_table(uc_file, out_fp):
         try:
             barcode = bar_re.findall(toks[8])[0]
         except IndexError:
-            print "Error in uc file formating. Check for spaces in sample IDs."
+            print "Error in uc file formating. Check for spaces in sample IDs to make sure there is a semicolon after sample IDs."
             break
         otu = toks[9]
         if otu=="*": continue
