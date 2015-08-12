@@ -47,7 +47,7 @@ def add_taxonomy_to_otu_table(otu_table_fp, taxonomy_fp):
         taxonomy_dict[line_split[0]] = line_split[1]
     for line in otu_table:
         line_split = line.strip().split('\t')
-        if line_split[0].startswith('#'):
+        if line_split[0].startswith('#') or line_split[0].startswith('OTUId'):
             table_out.append(line.strip() + "\ttaxonomy\n")
         else:
             otu_tax = taxonomy_dict[line_split[0]]
