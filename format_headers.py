@@ -2,6 +2,7 @@
 
 import os
 import argparse
+import gzip
 
 def main():
     parser = argparse.ArgumentParser(description=\
@@ -51,7 +52,11 @@ def main():
             print sampleID + ' reverse reads not found'
 
 def reformat(in_fp, out_f, sampleID):
-    for head, seq, qual in basic_fastq_parser(open(in_fp, 'U')):
+    if in_fp.endswith('.gz'):
+        seqs = gzip.open(in_fp, 'rb')
+    else:
+        seqs = open(in_fp, 'U')
+    for head, seq, qual in basic_fastq_parser(seqs):
         new_label = head + ";barcodelabel=" + sampleID + ";"
         write_fastq(new_label, seq, qual, out_f)
 
