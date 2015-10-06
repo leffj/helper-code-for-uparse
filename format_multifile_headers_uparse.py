@@ -38,8 +38,8 @@ def main():
         if line.startswith('#'):
             continue
         sampleID = line.split('\t')[0]
-        fwd_fp = line.split('\t')[1]
-        rev_fp = line.split('\t')[2]
+        fwd_fp = line.strip().split('\t')[1]
+        rev_fp = line.strip().split('\t')[2]
         # for each file relabel headers and append to appropriate out file
         print 'Reformatting ' + sampleID + '...'
         if os.path.exists(fwd_fp):
