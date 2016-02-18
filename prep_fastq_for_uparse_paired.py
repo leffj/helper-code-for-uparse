@@ -93,6 +93,8 @@ def create_barcode_dictionary(mapping, rc):
         barcode = line.strip().split('\t')[1]
         if rc:
             barcode = reverse_complement(barcode)
+        if barcode in barcode_dict:
+            raise ValueError("Duplicate baarcodes are not allowed in the mapping file.")
         barcode_dict[barcode] = sampleID
     return barcode_dict
 
