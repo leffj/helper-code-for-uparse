@@ -63,7 +63,7 @@ def create_otu_table(uc_file, out_fp):
     display_progress(handle.tell(), fileSize)
 
     # write table
-    print "\nWritting table..."
+    print "\nWriting table..."
     output = open(out_fp, "w")
     line = "#OTUId\t%s\n"%('\t'.join(barcodes))
     output.write(line)
