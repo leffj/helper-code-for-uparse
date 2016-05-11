@@ -2,3 +2,4 @@ test_files
 .idea*
 *edit*
 *.pyc
+.DS_Store
